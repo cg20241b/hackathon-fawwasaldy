@@ -49,16 +49,22 @@ loader.load('path/to/font.json', function(font) {
 window.addEventListener('keydown', (event) => {
   switch(event.key) {
     case 'w':
-      cube.position.y += 0.1;
+      cube.position.y -= 0.1;
       break;
     case 's':
-      cube.position.y -= 0.1;
+      cube.position.y += 0.1;
       break;
     case 'a':
       camera.position.x -= 0.1;
       break;
     case 'd':
       camera.position.x += 0.1;
+      break;
+    case 'q':
+      camera.position.z -= 0.1;
+      break;
+    case 'e':
+      camera.position.z += 0.1;
       break;
   }
 });
