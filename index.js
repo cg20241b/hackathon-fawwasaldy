@@ -4,7 +4,7 @@ import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
 // Scene, Camera, Renderer
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 2000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -13,13 +13,14 @@ document.body.appendChild(renderer.domElement);
 const cubeGeometry = new THREE.BoxGeometry();
 const cubeMaterial = new THREE.ShaderMaterial({
   // Shader code for glowing effect
+
 });
 const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 scene.add(cube);
 
 // Load Font and Create Text Meshes
 const loader = new FontLoader();
-loader.load('path/to/font.json', function(font) {
+loader.load('node_modules/three/examples/fonts/helvetiker_bold.typeface.json', function(font) {
   const textGeometry = new TextGeometry('i', {
     font: font,
     size: 1,
@@ -29,7 +30,7 @@ loader.load('path/to/font.json', function(font) {
     // Shader code for alphabet
   });
   const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-  textMesh.position.x = -5;
+  textMesh.position.x = -2;
   scene.add(textMesh);
 
   const digitGeometry = new TextGeometry('6', {
@@ -41,7 +42,7 @@ loader.load('path/to/font.json', function(font) {
     // Shader code for digit
   });
   const digitMesh = new THREE.Mesh(digitGeometry, digitMaterial);
-  digitMesh.position.x = 5;
+  digitMesh.position.x = 2;
   scene.add(digitMesh);
 });
 
@@ -49,10 +50,10 @@ loader.load('path/to/font.json', function(font) {
 window.addEventListener('keydown', (event) => {
   switch(event.key) {
     case 'w':
-      cube.position.y -= 0.1;
+      cube.position.y += 0.1;
       break;
     case 's':
-      cube.position.y += 0.1;
+      cube.position.y -= 0.1;
       break;
     case 'a':
       camera.position.x -= 0.1;
